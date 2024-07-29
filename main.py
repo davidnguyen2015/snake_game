@@ -13,8 +13,8 @@ def main():
     clock = pygame.time.Clock()
 
     # Load sounds
-    move_sound = pygame.mixer.Sound("snake_game\sound\move.mp3")
-    eat_sound = pygame.mixer.Sound("snake_game\sound\eat.mp3")
+    move_sound = pygame.mixer.Sound("sound\move.mp3")
+    eat_sound = pygame.mixer.Sound("sound\eat.mp3")
 
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption('Python Snake')
