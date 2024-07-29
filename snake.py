@@ -3,6 +3,11 @@ from settings import *
 
 class Snake:
     def __init__(self):
+        self.head_image = pygame.image.load('head.png')
+        self.body_image = pygame.image.load('body.png')
+        self.head_image = pygame.transform.scale(self.head_image, (CELL_SIZE, CELL_SIZE))
+        self.body_image = pygame.transform.scale(self.body_image, (CELL_SIZE, CELL_SIZE))
+        
         self.positions = [((WIDTH // 2), (HEIGHT // 2))]
         self.direction = (0, -CELL_SIZE)
         self.grow = False
@@ -36,9 +41,22 @@ class Snake:
         self.direction = (0, -CELL_SIZE)
         self.score = 0
         self.level = 1
-        self.speed = 10
+        self.speed = 5
 
     def draw(self, surface):
-        for pos in self.positions:
-            rect = pygame.Rect(pos, (CELL_SIZE, CELL_SIZE))
-            pygame.draw.rect(surface, GREEN, rect)
+        # Draw head
+        head_pos = self.positions[0]
+        if self.direction == (0, -CELL_SIZE):
+            head = pygame.transform.rotate(self.head_image, 0)  # Up
+        elif self.direction == (0, CELL_SIZE):
+            head = pygame.transform.rotate(self.head_image, 180)  # Down
+        elif self.direction == (-CELL_SIZE, 0):
+            head = pygame.transform.rotate(self.head_image, 90)  # Left
+        elif self.direction == (CELL_SIZE, 0):
+            head = pygame.transform.rotate(self.head_image, -90)  # Right
+        
+        surface.blit(head, head_pos)
+
+        # Draw body
+        for pos in self.positions[1:]:
+            surface.blit(self.body_image, pos)
