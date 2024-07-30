@@ -35,7 +35,7 @@ def main():
         text = font.render("Python Snake", True, WHITE)
         screen.blit(text, (WIDTH // 4, HEIGHT // 4))
         font = pygame.font.Font(None, 36)
-        text = font.render("Press H for Human Player or A for AI Player", True, WHITE)
+        text = font.render("Press H for Human Player or A for Auto Bot", True, WHITE)
         screen.blit(text, (WIDTH // 8, HEIGHT // 2))
         pygame.display.update()
 
